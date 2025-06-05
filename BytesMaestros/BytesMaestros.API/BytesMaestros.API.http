@@ -1,0 +1,6 @@
+@BytesMaestros.API_HostAddress = http://localhost:5274
+
+GET {{BytesMaestros.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
