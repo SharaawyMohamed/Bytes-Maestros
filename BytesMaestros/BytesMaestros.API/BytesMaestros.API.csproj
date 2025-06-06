@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BytesMaestros.Application\BytesMaestros.Application.csproj" />
     <ProjectReference Include="..\BytesMaestros.Persistence\BytesMaestros.Persistence.csproj" />
   </ItemGroup>
 

@@ -25,6 +25,11 @@ namespace BytesMaestros.Persistence.Data.Configurations
 				.WithMany(t => t.Products)
 				.HasForeignKey(p => p.TypeId)
 				.OnDelete(DeleteBehavior.Restrict);
+
+			builder.HasMany(p=>p.OrderItems)
+				.WithOne(p=>p.Product)
+				.HasForeignKey(p=>p.ProductId)
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

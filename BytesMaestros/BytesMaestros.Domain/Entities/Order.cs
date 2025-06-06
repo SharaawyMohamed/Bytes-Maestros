@@ -13,12 +13,10 @@ namespace BytesMaestros.Domain.Entities
 		public string CustomerEmail { get; set; }
 		public string CustomerAddress { get; set; }
 		public string Status { get; set; } = "Pending";
-		public DateTime DeliveryTime { get; set; }
+		public DateTime? DeliveryTime { get; set; }
 
 		public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
-		public decimal CalculateTotalAmount()
-		=> OrderItems.Sum(item => item.TotalPrice);
 	}
 
 }

@@ -17,5 +17,7 @@ namespace BytesMaestros.Domain.Entities
 		public Type Type { get; set; }
 		public int TypeId { get; set; }
 
+		public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
 	}
 }

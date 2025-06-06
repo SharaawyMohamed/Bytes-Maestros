@@ -6,4 +6,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+	  <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
+	  <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+	  <PackageReference Include="Mapster" Version="7.4.0" />
+	  <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Orders\Queries\" />
+    <Folder Include="Features\Products\Commands\" />
+    <Folder Include="Features\Types\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BytesMaestros.Domain\BytesMaestros.Domain.csproj" />
+    <ProjectReference Include="..\BytesMaestros.Persistence\BytesMaestros.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
