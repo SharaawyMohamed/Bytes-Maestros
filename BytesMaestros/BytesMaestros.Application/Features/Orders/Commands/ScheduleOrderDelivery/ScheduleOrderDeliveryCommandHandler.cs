@@ -45,7 +45,7 @@ namespace BytesMaestros.Application.Features.Orders.Commands.ScheduleOrderDelive
 
 			var mappedItems=orderItems.Adapt<IEnumerable<OrderItemDto>>();
 			orderDetails.OrderItems = mappedItems;
-			return await Response.Success(orderDetails, "Order delivery scheduled successfully!");
+			return await Response.Success(orderDetails,message: "Order delivery scheduled successfully!");
 		}
 	}
 

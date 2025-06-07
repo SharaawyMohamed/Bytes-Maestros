@@ -14,26 +14,17 @@ namespace BytesMaestros.Application.Utility
 		public HttpStatusCode StatusCode { get; set; }
 		public string Message { get; set; }
 		public object Data { get; set; }
-		public Guid? word { get; set; } 
+		public Guid? Word { get; set; } 
 		public List<string> Errors { get; set; } = new List<string>();
 
-		public static async Task<Response> Success(object data, string message = null)
+		public static async Task<Response> Success(object data,Guid? word=null, string message = null)
 		{
 			return new Response
 			{
 				StatusCode = HttpStatusCode.OK,
 				Message = message,
-				Data = data
-			};
-		}
-		public static async Task<Response> Success(object data,Guid orderId, string message = null)
-		{
-			return new Response
-			{
-				StatusCode = HttpStatusCode.OK,
-				Message = message,
-				word = orderId,
-				Data = data
+				Data = data,
+				Word = word
 			};
 		}
 

@@ -37,7 +37,7 @@ namespace BytesMaestros.Application.Features.Products.Queries.GetProducts
 				return await Response.Fail("No products found of this type!", HttpStatusCode.NotFound);
 			}
 			var result = products.Adapt<List<GetProductsByTypeQueryDto>>();
-			return await Response.Success(result, "Products retrieved successfully!");
+			return await Response.Success(result, message:"Products retrieved successfully!");
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace BytesMaestros.Application.Features.Types.Queries.GetAllTypes
 			}
 
 			var result=types.Adapt<List<GetAllTypesQueryDto>>();
-			return await Response.Success(result, "Types retrieved successfully.");
+			return await Response.Success(result, message: "Types retrieved successfully.");
 
 		}
 	}
