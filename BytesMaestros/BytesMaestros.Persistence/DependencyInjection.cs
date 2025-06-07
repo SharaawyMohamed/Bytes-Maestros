@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,10 @@ namespace BytesMaestros.Persistence
 {
 	public static class DependencyInjection
 	{
-		public static IServiceCollection AddPersistence(this IServiceCollection services,IConfiguration config)
+		public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
 		{
-			// Add your persistence-related services here
-			// For example, DbContext, repositories, etc.
-			// services.AddDbContext<YourDbContext>(options => ...);
-			// services.AddScoped<IYourRepository, YourRepository>();
 
-			services.AddDbContext<BytesMaestorsDbContext>(options => 
+			services.AddDbContext<BytesMaestorsDbContext>(options =>
 			{
 				options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 			});
@@ -29,7 +26,6 @@ namespace BytesMaestros.Persistence
 			services.AddIdentity<Customer, IdentityRole>()
 				.AddEntityFrameworkStores<BytesMaestorsDbContext>()
 				.AddDefaultTokenProviders();
-
 
 			return services;
 		}

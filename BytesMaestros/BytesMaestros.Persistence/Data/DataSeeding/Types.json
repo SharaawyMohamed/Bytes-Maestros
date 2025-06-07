@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "In-Stock Products",
+    "Description": "Items available in our warehouse. Eligible for same-day delivery if ordered before 18:00.",
+    "ImageUrl": "empty"
+  },
+  {
+    "Name": "Fresh Food",
+    "Description": "Products prepared daily (e.g., bakery goods, ready meals). Eligible for same-day delivery if ordered before 12:00.",
+    "ImageUrl": "empty"
+
+  },
+  {
+    "Name": "External Products",
+    "Description": "Supplied by third-party partners. These must be ordered at least 3 days in advance.",
+    "ImageUrl": "empty"
+  }
+]

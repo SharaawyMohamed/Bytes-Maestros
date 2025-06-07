@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BytesMaestros.Application.Features.Products.Queries.GetProducts
 {
 	public record GetProductsByTypeQueryDto(
-		int Id,
+		Guid Id,
 		string Name,
 		decimal Price,
 		int Stock,

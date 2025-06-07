@@ -18,4 +18,8 @@
     <ProjectReference Include="..\BytesMaestros.Domain\BytesMaestros.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\DataSeeding\" />
+  </ItemGroup>
+
 </Project>

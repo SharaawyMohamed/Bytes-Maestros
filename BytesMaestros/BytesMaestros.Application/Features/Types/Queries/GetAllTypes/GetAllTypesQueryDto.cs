@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BytesMaestros.Application.Features.Types.Queries.GetAllTypes
 {
     public record GetAllTypesQueryDto(
-		Guid Id,
+		int Id,
 		string Name,
 		string Description,
 		string ImageUrl

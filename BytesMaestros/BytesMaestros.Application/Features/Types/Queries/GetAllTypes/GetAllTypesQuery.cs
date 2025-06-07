@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace BytesMaestros.Application.Features.Types.Queries.GetAllTypes
 {
-	public record GetAllTypesQuery(int pageSize, int pageIndex) :IRequest<Response>;
+	public record GetAllTypesQuery:IRequest<Response>;
 }

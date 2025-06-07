@@ -17,7 +17,7 @@ namespace BytesMaestros.Application.Features.Types.Queries.GetAllTypes
 		private readonly IUnitOfWork _unitOfWork = unitOfWork;
 		public async Task<Response> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
 		{
-			var types = await _unitOfWork.Repository<int, Type>().GetAllAsync(request.pageSize,request.pageIndex);
+			var types = await _unitOfWork.Repository<int, Type>().GetAllAsync(10,1);
 			if (types == null || !types.Any())
 			{
 				return await Response.Fail("No types found.", HttpStatusCode.NotFound);

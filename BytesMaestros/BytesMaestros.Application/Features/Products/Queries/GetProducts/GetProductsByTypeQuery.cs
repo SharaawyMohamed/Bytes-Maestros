@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace BytesMaestros.Application.Features.Products.Queries.GetProducts
 {
-	public record GetProductsByTypeQuery(int Id, int pageSize, int pageIndex) :IRequest<Response>;
+	public record GetProductsByTypeQuery(int TypeId, int pageSize, int pageIndex) :IRequest<Response>;
 }

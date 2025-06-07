@@ -1,4 +1,5 @@
-﻿using BytesMaestros.Domain.Repositories;
+﻿using BytesMaestros.Application.Features.Orders.Commands.CreateOrder;
+using BytesMaestros.Domain.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Mapster;
@@ -22,7 +23,6 @@ namespace BytesMaestros.Application
 		public static IServiceCollection AddApplication(this IServiceCollection services)
 		{
 			services.AddHttpContextAccessor();
-
 			services.AddMapster();
 
 			#region Mediator Service
@@ -36,10 +36,9 @@ namespace BytesMaestros.Application
 
 			#region Fluent Validation Service
 
-			//services.AddValidatorsFromAssemblyContaining<RegisterCommandValidator>();
-			//services.AddValidatorsFromAssemblyContaining<UpdateEventCommandValidator>();
-
+			services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
 			#endregion
+
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 

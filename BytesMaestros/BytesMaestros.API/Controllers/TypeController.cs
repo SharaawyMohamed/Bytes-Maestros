@@ -4,13 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BytesMaestros.API.Controllers
 {
-	public class TypeController(IMediator mediator):BaseAPIController
+	public class TypeController:BaseAPIController
 	{
-		private readonly IMediator _mediator = mediator;
+		private readonly IMediator _mediator ;
+		public TypeController(IMediator mediator)
+		{
+			_mediator = mediator;
+		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetTypes(GetAllTypesQuery query)
+		public async Task<IActionResult> GetTypes()
 		{
+			var query = new GetAllTypesQuery();
 			return Ok(await _mediator.Send(query));
 		}
 	}
