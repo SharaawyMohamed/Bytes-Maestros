@@ -7,14 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using ProductEntity = BytesMaestros.Domain.Entities.Product;
 using TypeEntity = BytesMaestros.Domain.Entities.Type;
 using OrderEntity = BytesMaestros.Domain.Entities.Order;
 
-namespace BytesMaestros.Test.Order
+namespace BytesMaestros.Test.Order.Commands
 {
-	public class Commands : TestBase
+	public class CreateOrderTests : TestBase
 	{
 		#region Success Senario
 		[Fact]
@@ -139,7 +138,7 @@ namespace BytesMaestros.Test.Order
 				new OrderItemCommand(Guid.Parse("22222222-2222-2222-2222-222222222221"), 1)
 			};
 			var command = new CreateOrderCommand("Name", "test@email.com", "Address", "+20123456789", 1, items);
-			var validator=new CreateOrderCommandValidator();
+			var validator = new CreateOrderCommandValidator();
 			var handler = new CreateOrderCommandHandler(_unitOfWork, validator);
 
 			// Act
@@ -190,9 +189,9 @@ namespace BytesMaestros.Test.Order
 
 			var items = new List<OrderItemCommand>()
 			{
-				new OrderItemCommand(Guid.Parse("11111111-1111-1111-1111-111111111111"), 2), 
-                new OrderItemCommand(Guid.Parse("11111111-1111-1111-1111-111111111112"), 1)
-            };
+				new OrderItemCommand(Guid.Parse("11111111-1111-1111-1111-111111111111"), 2),
+				new OrderItemCommand(Guid.Parse("11111111-1111-1111-1111-111111111112"), 1)
+			};
 			var command = new CreateOrderCommand("Name", "test@email.com", "Address", "+20123456789", 1, items);
 			var vaidator = new CreateOrderCommandValidator();
 			var handler = new CreateOrderCommandHandler(_unitOfWork, vaidator);

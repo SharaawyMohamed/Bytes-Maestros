@@ -30,10 +30,11 @@ namespace BytesMaestros.Application.Features.Orders.Commands.ScheduleOrderDelive
 			}
 
 			var order = await _unitOfWork.Repository<Guid, Order>().GetByIdAsync(request.OrderId);
-			if (order == null)
+			if (order == null )
 			{
 				return await Response.Fail("Order not found!", System.Net.HttpStatusCode.NotFound);
 			}
+
 			var timeSlot = request.DeliveryDate;
 			order.DeliveryTime = new DateTime(timeSlot.Year,timeSlot.Month,timeSlot.Day,timeSlot.Hour,0,0);
 			await _unitOfWork.SaveChangesAsync();

@@ -87,6 +87,7 @@ namespace BytesMaestros.Application.Features.Orders.Commands.CreateOrder
 			var slots = await SlotsGenerator.GenerateTimeSlots(request.OrderTypeId);
 			order.DeliveryTime = slots.FirstOrDefault();
 
+			
 			await _unitOfWork.Repository<Guid, Order>().AddAsync(order);
 			await _unitOfWork.SaveChangesAsync();
 
