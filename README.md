@@ -20,14 +20,13 @@ This repository contains the source code and documentation for the Bytes Maestro
 
 ## 🛠️ Technologies Used
 
-| Technology     | Description                  |
-|----------------|------------------------------|
-| ASP.NET Core   | Backend framework            |
-| Entity Framework Core | ORM for data access  |
-| SignalR        | Real-time WebSocket handling |
-| SQL Server     | Relational database          |
-| MediatR        | CQRS and mediator pattern    |
-| Mapester       | Object mapping               |
+| Technology            | Description                  |
+|-----------------------|------------------------------|
+| ASP.NET Core          | Backend framework            |
+| Entity Framework Core | ORM for data access          |
+| SQL Server            | Relational database          |
+| MediatR               | CQRS and mediator pattern    |
+| Mapester              | Object mapping               |
 
 ## 🧪 Testing
 
