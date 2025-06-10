@@ -13,6 +13,7 @@ namespace BytesMaestros.Domain.Repositories
 		Task AddAsync(TEntity entity);
 		Task AddReangeAsync(IEnumerable<TEntity> entities);
 		Task<TEntity?> GetByIdAsync(TKey id);
+		Task<TEntity?> GetEntityWithPrdicateAsync(Expression<Func<TEntity, bool>> predicate);
 		Task<IReadOnlyList<TEntity>?> GetAllAsync(int pageSize, int pageIndex);
 		Task<IReadOnlyList<TEntity>?> GetWithPrdicateAsync(Expression<Func<TEntity, bool>> pridecate, int pageSize, int pageIndex);
 		

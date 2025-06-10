@@ -12,9 +12,14 @@ using Type = BytesMaestros.Domain.Entities.Type;
 
 namespace BytesMaestros.Application.Features.Types.Queries.GetAllTypes
 {
-	public class GetAllTypesQueryHandler(IUnitOfWork unitOfWork) : IRequestHandler<GetAllTypesQuery, Response>
+	public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, Response>
 	{
-		private readonly IUnitOfWork _unitOfWork = unitOfWork;
+		private readonly IUnitOfWork _unitOfWork ;
+		public GetAllTypesQueryHandler(IUnitOfWork unitOfWork)
+		{
+			_unitOfWork = unitOfWork;
+		}
+
 		public async Task<Response> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
 		{
 			var types = await _unitOfWork.Repository<int, Type>().GetAllAsync(10,1);

@@ -23,7 +23,6 @@ namespace BytesMaestros.API
 
 			var app = builder.Build();
 
-			// DbInitialzer
 			using (var scope = app.Services.CreateScope())
 			{
 				var services = scope.ServiceProvider;
@@ -34,11 +33,13 @@ namespace BytesMaestros.API
 			}
 
 			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
+			//if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
+
+			app.UseStaticFiles();
 
 			app.UseHttpsRedirection();
 

@@ -33,8 +33,11 @@ namespace BytesMaestros.Persistence.Repositories
 		public async Task<TEntity?> GetByIdAsync(TKey id)
 		=> await _entities.FindAsync(id)!;
 
+		public Task<TEntity?> GetEntityWithPrdicateAsync(Expression<Func<TEntity, bool>> predicate)
+		   => _entities.FirstOrDefaultAsync(predicate);
+
 		public async Task<IReadOnlyList<TEntity>?> GetWithPrdicateAsync(Expression<Func<TEntity, bool>> pridecate, int pageSize, int pageIndex)
-		=> await _entities.AsNoTracking().Where(pridecate).Skip((pageIndex-1)*pageSize).Take(pageSize).ToListAsync();
+		=> await _entities.Where(pridecate).Skip((pageIndex-1)*pageSize).Take(pageSize).ToListAsync();
 		
 	}
 

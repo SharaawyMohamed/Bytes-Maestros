@@ -15,7 +15,7 @@ namespace BytesMaestros.Application.Features.Orders.Commands.CreateOrder
 			RuleFor(x => x.CustomerEmail).NotEmpty().EmailAddress();
             RuleFor(x => x.CustomerAddress).NotEmpty();
 			RuleFor(x => x.CustomerPhoneNumber).NotEmpty().Matches(@"^\+?[0-9]{7,15}$");
-			RuleFor(x => x.OrderTypeId).InclusiveBetween(1, 3);
+			RuleFor(x => x.OrderTypeId).GreaterThan(0);
 			RuleFor(x => x.Items).NotEmpty().ForEach(item => item.SetValidator(new OrderItemCommandValidator()));
 		}
 	}

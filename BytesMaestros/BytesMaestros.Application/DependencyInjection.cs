@@ -1,5 +1,6 @@
 ﻿using BytesMaestros.Application.Features.Orders.Commands.CreateOrder;
 using BytesMaestros.Domain.Repositories;
+using BytesMaestros.Persistence.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Mapster;
@@ -14,7 +15,6 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using VirtualAIStylist.Persistence.Repositories;
 
 namespace BytesMaestros.Application
 {

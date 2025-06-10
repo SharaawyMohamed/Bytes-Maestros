@@ -50,15 +50,19 @@ namespace BytesMaestros.Application.Features.Orders.Commands.CreateOrder
 
 			foreach (var item in request.Items)
 			{
-				var product = await _unitOfWork.Repository<Guid, Product>().GetByIdAsync(item.ProductId);
+				var product = await _unitOfWork.Repository<Guid, Product>().GetEntityWithPrdicateAsync(x => x.TypeId == request.OrderTypeId && x.Id == item.ProductId);
 				if (product is null)
 				{
-					return await Response.Fail($"Product with ID {item.ProductId} not found.", HttpStatusCode.NotFound);
+					return await Response.Fail($"Product with ID {item.ProductId} not found or it's not belongs to the type with Id:{request.OrderTypeId} !", HttpStatusCode.NotFound);
 				}
 
 				if (product.Stock < item.Quantity)
 				{
 					return await Response.Fail($"Insufficient stock for product {product.Name}. Available: {product.Stock}, Requested: {item.Quantity}", HttpStatusCode.BadRequest);
+				}
+				else
+				{
+					product.Stock -= item.Quantity;
 				}
 
 				var orderItem = new OrderItem()
@@ -80,62 +84,13 @@ namespace BytesMaestros.Application.Features.Orders.Commands.CreateOrder
 			order.OrderItems = orderItems;
 			order.TotalAmount = orderTotalAmount;
 
+			var slots = await SlotsGenerator.GenerateTimeSlots(request.OrderTypeId);
+			order.DeliveryTime = slots.FirstOrDefault();
+
 			await _unitOfWork.Repository<Guid, Order>().AddAsync(order);
 			await _unitOfWork.SaveChangesAsync();
 
-			return await Response.Success(await GenerateTimeSlots(request.OrderTypeId), order.Id, "Order created successfully.Please select a delivery time slot.");
-
+			return await Response.Success(slots, order.Id, "Order created successfully.Please select a delivery time slot.");
 		}
-
-		private async Task<List<DateTimeOffset>> GenerateTimeSlots(int orderTypeId)
-		{
-			var now = DateTimeOffset.Now;
-			var timeSlots = new List<DateTimeOffset>();
-			int startRange = 8;
-			int endRange = 22;
-			int startDay;
-
-			switch (orderTypeId)
-			{
-				case 1:
-					startDay = now.Hour < 18 ? 0 : 1;
-					break;
-
-				case 2:
-					startDay = now.Hour < 12 ? 0 : 1;
-					break;
-
-				case 3:
-					startDay = 3;
-					break;
-
-				default:
-					startDay = 0;
-					break;
-			}
-
-
-			for (int day = startDay; day < 14; day++)
-			{
-				var currentDay = now.AddDays(day);
-				if (DayOfWeek.Saturday == currentDay.DayOfWeek || DayOfWeek.Sunday ==currentDay.DayOfWeek)
-				{
-					continue;
-				}
-
-				for (int hour = startRange + 1; hour < endRange; hour++)
-				{
-
-					var slot = new DateTimeOffset(currentDay.Year, currentDay.Month, currentDay.Day, hour, 0, 0, TimeSpan.Zero);
-					if (slot > now)
-					{
-						timeSlots.Add(slot);
-					}
-				}
-			}
-
-			return await Task.FromResult(timeSlots);
-		}
-
 	}
 }
