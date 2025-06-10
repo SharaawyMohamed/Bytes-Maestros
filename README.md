@@ -12,13 +12,35 @@ This repository contains the source code and documentation for the Bytes Maestro
 - **Database**: SQL Server  
 - **Design Pattern**: Clean Architecture with MediatR and Unit of Work  
 
-## 🚀 Features
+## Features ✨
+
+- **Product Management**:
+  - Categorize products by type (In-Stock, Fresh Food, External)
+  - Track inventory levels
+  - Manage product details and images
+
+- **Order Processing**:
+  - Customer order creation
+  - Automatic stock deduction
+  - Order status tracking
+
+- **Smart Delivery Scheduling**:
+  - Automatic time slot generation
+  - Best delivery time calculation
+  - Type-specific delivery rules
+
+- **Customer Experience**:
+  - Order history tracking
+  - Delivery time management
+  - Shopping cart functionality
+
+
+
+## 🛠️ Technologies Used
 
 - 📦 Modular project layers
 - 🧪 Unit testing with xUnit and FluentAssertions
 - 📄 Clean, documented Resful API 
-
-## 🛠️ Technologies Used
 
 | Technology            | Description                  |
 |-----------------------|------------------------------|
